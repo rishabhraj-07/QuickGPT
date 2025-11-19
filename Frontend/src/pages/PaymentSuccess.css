@@ -1,0 +1,42 @@
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0f1419;
+}
+
+.success-card {
+  background-color: #1a1f26;
+  border-radius: 12px;
+  padding: 40px 60px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  border: 1px solid #2d3748;
+}
+
+.success-icon-wrapper {
+  display: inline-flex;
+  margin-bottom: 20px;
+}
+
+.success-icon {
+  width: 48px;
+  height: 48px;
+  color: #22c55e;
+}
+
+.success-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #22c55e;
+  margin: 0 0 12px 0;
+}
+
+.success-message {
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+  line-height: 1.5;
+}

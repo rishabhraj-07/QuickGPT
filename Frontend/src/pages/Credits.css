@@ -1,0 +1,108 @@
+.container {
+  height: 100vh;
+  background-color: var(--bg);
+}
+
+/* Title */
+.title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0;
+  padding-block: 5rem;
+}
+
+/* Grid */
+.plansGrid {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Card */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1rem 2.5rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+/* Popular Card */
+.popularCard {
+  border: 2px solid #8b5cf6;
+  box-shadow: 0 8px 16px rgba(139, 92, 246, 0.2);
+}
+
+/* Card Header */
+.cardHeader {
+  margin-bottom: 28px;
+}
+
+/* Plan Name */
+.planName {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+
+/* Price */
+.priceContainer {
+  display: flex;
+  align-items: baseline;
+}
+
+.price {
+  font-size: 36px;
+  font-weight: 700;
+  color: #8b5cf6;
+}
+
+.credits {
+  font-size: 16px;
+  color: var(--secondary-text);
+  margin-left: 4px;
+}
+
+/* Features */
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+}
+
+.featureItem {
+  color: var(--fg);
+  opacity: 0.7;
+  font-size: 15px;
+  margin-bottom: 14px;
+  padding-left: 24px;
+  position: relative;
+  line-height: 1.5;
+}
+
+/* Button */
+.button {
+  display: block;
+  width: 100%;
+  padding: 1rem 5rem;
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #7c3aed;
+}

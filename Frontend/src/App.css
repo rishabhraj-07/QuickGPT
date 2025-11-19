@@ -1,0 +1,63 @@
+* {
+  /* color: #ececec; */
+  color: var(--fg);
+  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  /* background-color: #212121; */
+  background-color: var(--bg);
+  display: flex;
+}
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+  background: #1e1e1e; /* dark */
+}
+
+/* Thumb (the moving part) */
+::-webkit-scrollbar-thumb {
+  background: #444; /* grey */
+  border-radius: 10px;
+}
+
+/* On hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Default light theme */
+body[data-theme="light"] {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark theme */
+body[data-theme="dark"] {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --secondary-bg: #f0f0f0;
+  --card-bg: #eaeaea;
+}
+
+body[data-theme="dark"] {
+  --bg: #121212;
+  --fg: #ffffff;
+  --secondary-bg: #1e1e1e;
+  --card-bg: #323232;
+}

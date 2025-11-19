@@ -1,0 +1,32 @@
+.signup-wrapper {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-title {
+  color: var(--fg);
+}
+
+.signup-subtext {
+  color: var(--secondary-text);
+}
+
+.link {
+  color: var(--secondary-text);
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+}
+
+.login-link {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}

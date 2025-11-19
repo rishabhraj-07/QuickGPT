@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import chatRoutes from "./routes/chat.js";
 import authRoutes from "./routes/AuthRoutes.js";
 import creditRoutes from "./routes/CreditRoutes.js";
-import { stripeWebhook } from "./controllers/WebHook.js";
+import { stripeWebhook } from "./controllers/Webhook.js";
 
 const app = express();
 const PORT = 8000;

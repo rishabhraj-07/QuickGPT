@@ -73,7 +73,6 @@ const Login = () => {
           sx={{
             p: 4,
             backgroundColor: "var(--card-bg)", // Theme-based
-            border: "1px solid var(--border)", // Theme-based
             color: "var(--fg)",
             maxWidth: "400px",
             mx: "auto",

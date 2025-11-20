@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -8,36 +8,17 @@ const VoiceSpeech = ({ onText }) => {
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
 
   useEffect(() => {
-    // If microphone is blocked or browser does not support it
-    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-      console.warn("Browser does not support speech recognition.");
-      return;
+    if (!listening && transcript) {
+      onText(transcript);
     }
+  }, [listening]);
 
-    // When listening stops and transcript exists → send text
-    if (!listening && transcript.trim().length > 0) {
-      onText(transcript.trim());
-      resetTranscript();
-    }
-  }, [listening, transcript]);
-
-  const startListening = async () => {
+  const startListening = () => {
     resetTranscript();
-
-    try {
-      // Check mic permission before starting
-      await navigator.mediaDevices.getUserMedia({ audio: true });
-
-      SpeechRecognition.startListening({
-        continuous: true,
-        language: "en-US",
-      });
-    } catch (error) {
-      console.error("Microphone permission denied:", error);
-      alert(
-        "Microphone access blocked. Please allow microphone for this website."
-      );
-    }
+    SpeechRecognition.startListening({
+      continuous: true,
+      language: "en-US",
+    });
   };
 
   const stopListening = () => {
@@ -45,9 +26,7 @@ const VoiceSpeech = ({ onText }) => {
   };
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    return (
-      <p style={{ color: "red" }}>Your browser does not support voice input.</p>
-    );
+    return <p>Browser does not support speech recognition</p>;
   }
 
   return (
@@ -56,9 +35,9 @@ const VoiceSpeech = ({ onText }) => {
       className="mic-btn"
     >
       {!listening ? (
-        <i className="fa-solid fa-microphone"></i>
+        <i class="fa-solid fa-microphone"></i>
       ) : (
-        <i className="fa-solid fa-circle-stop"></i>
+        <i class="fa-solid fa-circle-stop"></i>
       )}
     </button>
   );

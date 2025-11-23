@@ -22,6 +22,7 @@ const PaymentSuccess = () => {
           Your transaction has been completed successfully.
         </p>
       </div>
+      <Link to="/">Go to Home</Link>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import chatRoutes from "./routes/chat.js";
 import authRoutes from "./routes/AuthRoutes.js";
 import creditRoutes from "./routes/CreditRoutes.js";
 import { stripeWebhook } from "./controllers/Webhook.js";
+import SpeechRoute from "./routes/SpeechRoute.js";
 
 const app = express();
 const PORT = 8000;
@@ -28,6 +29,7 @@ app.use(
 app.use("/api", chatRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/credit", creditRoutes);
+app.use("/api/speech", SpeechRoute);
 
 const connectDB = async () => {
   try {

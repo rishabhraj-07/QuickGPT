@@ -102,7 +102,7 @@ const Sidebar = () => {
 
       <button onClick={createNewChat} className="new-chat-btn">
         <span className="newchat">
-          <i class="fa-regular fa-pen-to-square"></i>New Chat
+          <i className="fa-regular fa-pen-to-square"></i>New Chat
         </span>
       </button>
 

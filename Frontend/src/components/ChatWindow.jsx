@@ -4,7 +4,7 @@ import { MyContext } from "../context/MyContext.jsx";
 import { useContext, useState, useEffect } from "react";
 import { ScaleLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import VoiceSpeech from "./VoiceSpeech.jsx";
 
 const ChatWindow = () => {
@@ -30,7 +30,7 @@ const ChatWindow = () => {
   const getReply = async () => {
     //Check for credits
     if (credits <= 0) {
-      toast.error("You have no credits left. Please upgrade your plan.");
+      toast.error("No credits left. Please upgrade your plan.");
       return;
     }
 
@@ -150,6 +150,7 @@ const ChatWindow = () => {
           Preferences.
         </p>
       </div>
+      <ToastContainer position="top-right" autoClose={3000} theme="dark" />
     </div>
   );
 };

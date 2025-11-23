@@ -90,7 +90,15 @@ const Sidebar = () => {
   return (
     <section className="sidebar">
       <div className="sidebar-header">
+<<<<<<< HEAD
         <img src={blacklogo} alt="gptLogo" className="logo"></img>
+=======
+        <img
+          src={blacklogo}
+          alt="gptLogo"
+          className="logo"
+        ></img>
+>>>>>>> d225e4f2b6bc0438c2e6a54609574cc339033d7a
         <div className="credits-badge" title="Available credits">
           <i className="fa-solid fa-coins"></i>
           <span>Credit Left : {credits}</span>

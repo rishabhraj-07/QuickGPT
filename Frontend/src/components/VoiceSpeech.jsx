@@ -7,6 +7,8 @@ const VoiceSpeech = ({ onText }) => {
   const [isRecording, setIsRecording] = useState(false);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   const startRecording = async () => {
     audioChunksRef.current = [];
 
@@ -40,10 +42,20 @@ const VoiceSpeech = ({ onText }) => {
     formData.append("audio", audioBlob, "voiceInput.webm");
 
     try {
+<<<<<<< HEAD
       const res = await fetch(`${backendUrl}/api/speech/convert-speech`, {
         method: "POST",
         body: formData,
       });
+=======
+      const res = await fetch(
+       `${backendUrl}/api/speech/convert-speech`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+>>>>>>> d225e4f2b6bc0438c2e6a54609574cc339033d7a
 
       const data = await res.json();
       if (data.text) {

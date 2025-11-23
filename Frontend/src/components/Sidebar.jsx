@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { MyContext } from "../context/MyContext.jsx";
 import { v1 as uuidv1 } from "uuid";
 import ThemeToggle from "./ThemeToggle.jsx";
+import blacklogo from "../assets/blacklogo.png";
 
 const Sidebar = () => {
   const {
@@ -90,7 +91,7 @@ const Sidebar = () => {
     <section className="sidebar">
       <div className="sidebar-header">
         <img
-          src="src/assets/blacklogo.png"
+          src={blacklogo}
           alt="gptLogo"
           className="logo"
         ></img>

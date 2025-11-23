@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { MyContext } from "../context/MyContext.jsx";
 import { v1 as uuidv1 } from "uuid";
 import ThemeToggle from "./ThemeToggle.jsx";
+import blacklogo from "../assets/blacklogo.png";
 
 const Sidebar = () => {
   const {
@@ -89,11 +90,7 @@ const Sidebar = () => {
   return (
     <section className="sidebar">
       <div className="sidebar-header">
-        <img
-          src="src/assets/blacklogo.png"
-          alt="gptLogo"
-          className="logo"
-        ></img>
+        <img src={blacklogo} alt="gptLogo" className="logo"></img>
         <div className="credits-badge" title="Available credits">
           <i className="fa-solid fa-coins"></i>
           <span>Credit Left : {credits}</span>

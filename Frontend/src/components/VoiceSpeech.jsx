@@ -1,49 +1,3 @@
-// import React, { useEffect, useContext } from "react";
-// import SpeechRecognition, {
-//   useSpeechRecognition,
-// } from "react-speech-recognition";
-// import "./VoiceSpeech.css";
-
-// const VoiceSpeech = ({ onText }) => {
-//   const { transcript, listening, resetTranscript } = useSpeechRecognition();
-
-//   useEffect(() => {
-//     if (!listening && transcript) {
-//       onText(transcript);
-//     }
-//   }, [listening]);
-
-//   const startListening = () => {
-//     resetTranscript();
-//     SpeechRecognition.startListening({
-//       continuous: true,
-//       language: "en-US",
-//     });
-//   };
-
-//   const stopListening = () => {
-//     SpeechRecognition.stopListening();
-//   };
-
-//   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-//     return <p>Browser does not support speech recognition</p>;
-//   }
-
-//   return (
-//     <button
-//       onClick={!listening ? startListening : stopListening}
-//       className="mic-btn"
-//     >
-//       {!listening ? (
-//         <i class="fa-solid fa-microphone"></i>
-//       ) : (
-//         <i class="fa-solid fa-circle-stop"></i>
-//       )}
-//     </button>
-//   );
-// };
-
-// export default VoiceSpeech;
 import React, { useRef, useState } from "react";
 import "./VoiceSpeech.css";
 
@@ -51,6 +5,7 @@ const VoiceSpeech = ({ onText }) => {
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const [isRecording, setIsRecording] = useState(false);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const startRecording = async () => {
     audioChunksRef.current = [];
@@ -85,13 +40,10 @@ const VoiceSpeech = ({ onText }) => {
     formData.append("audio", audioBlob, "voiceInput.webm");
 
     try {
-      const res = await fetch(
-        "http://localhost:8000/api/speech/convert-speech",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const res = await fetch(`${backendUrl}/api/speech/convert-speech`, {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await res.json();
       if (data.text) {

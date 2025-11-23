@@ -1,24 +1,34 @@
-import fs from "fs";
-import Groq from "groq-sdk";
+import FormData from "form-data";
+import fetch from "node-fetch";
 import "dotenv/config";
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-
-const groqSpeechToText = async (filePath) => {
+const groqSpeechToText = async (fileUrl) => {
   try {
-    const res = await groq.audio.transcriptions.create({
-      file: fs.createReadStream(filePath),
-      model: "whisper-large-v3", // Groq Whisper Model
-      response_format: "json",
-    });
+    const formData = new FormData();
+    formData.append("url", fileUrl);
+    formData.append("model", "whisper-large-v3");
 
-    if (res && res.text) {
-      return res.text;
+    const response = await fetch(
+      "https://api.groq.com/openai/v1/audio/transcriptions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+        },
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+
+    if (data && data.text) {
+      return data.text;
     } else {
-      throw new Error("No transcription text returned from Groq API");
+      throw new Error("Groq returned no text");
     }
-  } catch (err) {
-    console.error("Error reading audio file:", err);
+  } catch (error) {
+    console.error("Groq STT Error:", error);
+    return "";
   }
 };
 

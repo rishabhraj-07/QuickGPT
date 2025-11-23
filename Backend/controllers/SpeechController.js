@@ -1,21 +1,19 @@
 import groqSpeechToText from "../utils/SpeechTotext.js";
-import fs from "fs";
+//import fs from "fs";
 
 export const convertSpeech = async (req, res) => {
-  if (!req.file) {
-    return res
-      .status(400)
-      .json({ success: false, message: "No audio file provided" });
-  }
-
   try {
-    const filePath = req.file.path;
+    if (!req.file) {
+      return res
+        .status(400)
+        .json({ success: false, message: "No audio file provided" });
+    }
+    const audioUrl = req.file.path;
 
-    const text = await groqSpeechToText(filePath);
+    const text = await groqSpeechToText(audioUrl);
 
-    fs.unlinkSync(filePath);
-
-    res.status(200).json({ success: true, text });
+    //fs.unlinkSync(audioUrl);
+    res.status(200).json({ success: true, text, audioUrl });
   } catch (error) {
     console.log("Groq STT Error:", error);
     res

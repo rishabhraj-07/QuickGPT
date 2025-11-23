@@ -20,7 +20,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:8000"],
+    origin: ["https://quickgpt-frontend-la25.onrender.com", "https://quickgpt-iewy.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

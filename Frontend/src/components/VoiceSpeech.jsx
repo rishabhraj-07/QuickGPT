@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
 import "./VoiceSpeech.css";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const VoiceSpeech = ({ onText }) => {
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const [isRecording, setIsRecording] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const startRecording = async () => {
@@ -31,6 +33,7 @@ const VoiceSpeech = ({ onText }) => {
         .forEach((track) => track.stop());
     }
     setIsRecording(false);
+    setIsLoading(true);
   };
 
   const handleStop = async () => {
@@ -51,6 +54,8 @@ const VoiceSpeech = ({ onText }) => {
       }
     } catch (error) {
       console.error("Transcription error:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -58,11 +63,17 @@ const VoiceSpeech = ({ onText }) => {
     <button
       onClick={isRecording ? stopRecording : startRecording}
       className="mic-btn"
+      disabled={isLoading}
     >
-      {!isRecording ? (
+      {isLoading ? (
+        <CircularProgress size={22} />
+      ) : !isRecording ? (
         <i className="fa-solid fa-microphone"></i>
       ) : (
-        <i className="fa-solid fa-circle-stop"></i>
+        <div className="recording-ui">
+          <span className="listening-text">Listening...</span>
+          <i className="fa-solid fa-circle-stop stop-icon"></i>
+        </div>
       )}
     </button>
   );

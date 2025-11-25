@@ -3,3 +3,33 @@
   cursor: pointer;
   font-size: 20px;
 }
+
+.recording-ui {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.listening-text {
+  font-size: 12px;
+  color: #ff0000;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.stop-icon {
+  color: #ff4444;
+  font-size: 20px;
+  cursor: pointer;
+}

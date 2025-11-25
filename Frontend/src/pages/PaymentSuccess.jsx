@@ -1,5 +1,6 @@
 import React from "react";
 import "./PaymentSuccess.css";
+import { Link } from "react-router-dom";
 
 const PaymentSuccess = () => {
   return (
@@ -21,8 +22,11 @@ const PaymentSuccess = () => {
         <p className="success-message">
           Your transaction has been completed successfully.
         </p>
+        <br />
+        <Link to="/" className="link">
+          Go to Home <i className="fa-solid fa-arrow-right"></i>
+        </Link>
       </div>
-      <Link to="/">Go to Home</Link>
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import groqSpeechToText from "../utils/SpeechTotext.js";
-//import fs from "fs";
 
 export const convertSpeech = async (req, res) => {
   try {

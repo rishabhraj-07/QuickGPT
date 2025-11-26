@@ -6,6 +6,7 @@ import { ScaleLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import VoiceSpeech from "./VoiceSpeech.jsx";
+import { playVoice } from "./PlayAudio.jsx";
 
 const ChatWindow = () => {
   const {
@@ -23,11 +24,14 @@ const ChatWindow = () => {
 
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isFromVoice, setIsFromVoice] = useState(false);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const navigate = useNavigate();
 
-  const getReply = async () => {
+  const getReply = async (message = promt) => {
+    if (!message.trim()) return;
+
     //Check for credits
     if (credits <= 0) {
       toast.error("No credits left. Please upgrade your plan.");
@@ -42,7 +46,7 @@ const ChatWindow = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: promt, threadId: currThreadId }),
+      body: JSON.stringify({ message, threadId: currThreadId }),
     };
 
     try {
@@ -50,6 +54,10 @@ const ChatWindow = () => {
       const res = await response.json();
       console.log(res);
       setReply(res.reply);
+
+      if (isFromVoice) {
+        await playVoice(res.reply); // Only speak when input was voice
+      }
 
       if (res.credits !== undefined) {
         setCredits(res.credits); // Update credits
@@ -75,6 +83,12 @@ const ChatWindow = () => {
 
   const handleProfileClick = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleVoiceClick = async (text) => {
+    setPromt(text);
+    setIsFromVoice(true);
+    await getReply(text);
   };
 
   const handleLogout = async () => {
@@ -128,18 +142,28 @@ const ChatWindow = () => {
             value={promt}
             onChange={(e) => setPromt(e.target.value)}
             onKeyDown={(e) =>
-              e.key === "Enter" && promt.trim() ? getReply() : ""
+              e.key === "Enter" && promt.trim()
+                ? (setIsFromVoice(false), getReply(promt))
+                : ""
             }
           ></input>
           <div className="inputIcons">
+            {/*  Mic only visible when no text */}
             {!promt.trim() && (
               <div className="micIcon">
-                <VoiceSpeech onText={(text) => setPromt(text)} />
+                <VoiceSpeech onText={handleVoiceClick} />
               </div>
             )}
 
+            {/*  Send icon when text exists */}
             {promt.trim() && (
-              <div className="sendIcon" onClick={getReply}>
+              <div
+                className="sendIcon"
+                onClick={() => {
+                  setIsFromVoice(false); // TTS disabled
+                  getReply(promt);
+                }}
+              >
                 <i className="fa-solid fa-paper-plane"></i>
               </div>
             )}

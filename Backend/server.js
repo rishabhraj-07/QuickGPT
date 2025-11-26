@@ -8,6 +8,7 @@ import authRoutes from "./routes/AuthRoutes.js";
 import creditRoutes from "./routes/CreditRoutes.js";
 import { stripeWebhook } from "./controllers/Webhook.js";
 import SpeechRoute from "./routes/SpeechRoute.js";
+import TextToSpeechRoute from "./routes/TTS.js";
 
 const app = express();
 const PORT = 8000;
@@ -20,7 +21,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:8000"],
+    origin: [
+      "https://quickgpt-frontend-la25.onrender.com",
+      "https://quickgpt-iewy.onrender.com",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -30,6 +34,7 @@ app.use("/api", chatRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/credit", creditRoutes);
 app.use("/api/speech", SpeechRoute);
+app.use("/api/tts", TextToSpeechRoute);
 
 const connectDB = async () => {
   try {

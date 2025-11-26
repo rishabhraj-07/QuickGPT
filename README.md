@@ -55,7 +55,7 @@ A fully functional AI-powered chat application built using MERN Stack with Groq 
 - Powered by Groq Whisper API
 - Supports microphone-based recording
 
-2. Text-to-Speech (TTS)
+2.Text-to-Speech (TTS)
 - Converts AI response into speech
 - Great for hands-free usage
 - Works directly by clicking the mic button
@@ -79,6 +79,15 @@ A fully functional AI-powered chat application built using MERN Stack with Groq 
 - Real-time intelligent replies
 
 ---
+
+<h2 align="center">🚀 Deployment</h2>
+
+<p align="center">
+  <a href="https://quickgpt-frontend-la25.onrender.com/" target="_blank">
+    <img src="https://img.shields.io/badge/Deployed%20on-Render%20Cloud-46E3B7?style=for-the-badge&logo=render&logoColor=white" />
+  </a>
+</p>
+
 
 ## ⚡ Installation & Setup
 

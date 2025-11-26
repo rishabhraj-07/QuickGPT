@@ -8,7 +8,7 @@ A fully functional AI-powered chat application built using MERN Stack with Groq 
 
 ## 🌐 Live Demo
 
-🔗 **Live Demo:** -- [QuickGPT] Live Link](https://quickgpt-frontend-la25.onrender.com/)  
+🔗 **Live Demo:** -- [QuickGPT](https://quickgpt-frontend-la25.onrender.com/)  
 
 ---
 

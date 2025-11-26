@@ -3,7 +3,6 @@ import { useContext, useEffect } from "react";
 import { MyContext } from "../context/MyContext.jsx";
 import { v1 as uuidv1 } from "uuid";
 import ThemeToggle from "./ThemeToggle.jsx";
-import blacklogo from "../assets/blacklogo.png";
 
 const Sidebar = () => {
   const {

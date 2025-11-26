@@ -78,16 +78,11 @@ A fully functional AI-powered chat application built using MERN Stack with Groq 
 - Super-fast inference
 - Real-time intelligent replies
 
+🖥️ Deployment
+
+- Render Cloud
+
 ---
-
-<h2 align="center">🚀 Deployment</h2>
-
-<p align="center">
-  <a href="https://quickgpt-frontend-la25.onrender.com/" target="_blank">
-    <img src="https://img.shields.io/badge/Deployed%20on-Render%20Cloud-46E3B7?style=for-the-badge&logo=render&logoColor=white" />
-  </a>
-</p>
-
 
 ## ⚡ Installation & Setup
 

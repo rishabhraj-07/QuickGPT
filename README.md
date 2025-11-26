@@ -1,7 +1,7 @@
 <h1 align="center">🚀 QuickGPT – AI Powered Chat Application</h1>
 
-<p align="center>
-   A fully functional AI-powered chat application built using MERN Stack with Groq AI integration. It offers supporting both text and voice-based interactions, theme switching, secure authentication, payment gateway integration, free credits, and chat history management.
+<p align="center">
+A fully functional AI-powered chat application built using MERN Stack with Groq AI integration. It offers supporting both text and voice-based interactions, theme switching, secure authentication, payment gateway integration, free credits, and chat history management.
 </p>
 
 ---
